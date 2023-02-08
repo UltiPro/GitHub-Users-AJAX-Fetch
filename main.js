@@ -1,3 +1,5 @@
+import { StartDownloadData } from "./main_by_ajax.js";
+
 const btn = document.querySelector('.btn');
 
 const btnAnimation = e => {
@@ -18,20 +20,7 @@ const btnAnimation = e => {
 
 btn.addEventListener('click', btnAnimation);
 
-function BuildUserSquare(id, login, imgUrl, urltoAccount) {
-    const html = document.createElement('div');
-    html.classList.add("userBox");
-    html.innerHTML = `
-        <a href="${urltoAccount}">
-            <img src="${imgUrl}" title="User Image" class="userBox-img" />
-        </a>
-        <div class="userBox-body">
-            Id: ${id}<br/>
-            Login: ${login}<br/>
-        </div>
-    `;
-    return html;
-}
+
 
 function BuildErrorSquare(message){
     const html = document.createElement('div');
@@ -39,3 +28,7 @@ function BuildErrorSquare(message){
     html.innerText = message;
     return html;
 }
+
+btn.addEventListener('click', ()=> {
+    StartDownloadData(btn);
+});

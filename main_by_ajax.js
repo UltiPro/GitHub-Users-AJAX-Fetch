@@ -30,7 +30,22 @@ function GetData() {
     });
 }
 
-function StartDownloadData() {
+function BuildUserSquare(id, login, imgUrl, urltoAccount) {
+    const html = document.createElement('div');
+    html.classList.add("userBox");
+    html.innerHTML = `
+        <a href="${urltoAccount}">
+            <img src="${imgUrl}" title="User Image" class="userBox-img" />
+        </a>
+        <div class="userBox-body">
+            Id: ${id}<br/>
+            Login: ${login}<br/>
+        </div>
+    `;
+    return html;
+}
+
+export function StartDownloadData(btn) {
     setTimeout(() => {
         btn.remove();
         document.querySelector(".lds-roller").style.display = "block";
@@ -43,5 +58,3 @@ function StartDownloadData() {
         });
     }, 300);
 }
-
-btn.addEventListener('click', StartDownloadData);
